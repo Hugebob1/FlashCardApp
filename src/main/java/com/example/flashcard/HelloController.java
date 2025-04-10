@@ -3,6 +3,8 @@ package com.example.flashcard;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,6 +21,9 @@ public class HelloController implements Initializable {
 
     @FXML
     private Label welcomeText;
+
+    @FXML
+    private ProgressBar barOfProgress;
 
     @FXML
     private Label posText;
@@ -41,6 +46,7 @@ public class HelloController implements Initializable {
             int c = pos+1;
             welcomeText.setText(QuestionLoader.getQuestion(pos).getQuestion());
             posText.setText("Nr. " + c);
+            barOfProgress.setProgress((double) pos /(N-1));
         }
     }
 
@@ -51,6 +57,7 @@ public class HelloController implements Initializable {
             int c = pos+1;
             welcomeText.setText(QuestionLoader.getQuestion(pos).getQuestion());
             posText.setText("Nr. " + c);
+            barOfProgress.setProgress((double) pos /(N-1));
         }
         else if(pos == N-1) {
             welcomeText.setText("Dzieki ze zagrales trzymaj tak dalej:");
@@ -67,6 +74,8 @@ public class HelloController implements Initializable {
         pos = 0;
         welcomeText.setText(QuestionLoader.getQuestion(pos).getQuestion());
         posText.setText("Nr. " + (pos+1));
+        barOfProgress.setProgress(0.0);
+        System.out.println("restart");
 
     }
 
@@ -83,5 +92,6 @@ public class HelloController implements Initializable {
         N = questions.size();
         posText.setText("Nr. " + c);
         welcomeText.setText(QuestionLoader.getQuestion(pos).getQuestion());
+        barOfProgress.setProgress(0.0);
     }
 }

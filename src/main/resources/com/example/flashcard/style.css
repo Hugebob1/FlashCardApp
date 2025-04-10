@@ -67,3 +67,30 @@
     -fx-border-width: 1;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 4, 0.2, 0, 2);
 }
+.progress-bar {
+    -fx-accent: #7f5af0;
+    -fx-control-inner-background: transparent; /* usuwa tło wewnętrzne */
+    -fx-background-color: transparent; /* usuwa obwódkę */
+    -fx-background-insets: 0;
+    -fx-border-color: transparent; /* usuwa biały border */
+    -fx-border-width: 0;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 4;
+    -fx-effect: dropshadow(gaussian, #7f5af099, 10, 0.6, 0, 3);
+    -fx-min-height: 16;
+}
+
+.progress-bar > .track {
+    -fx-background-color: #1c1b2f; /* tło paska */
+    -fx-background-insets: 0;
+    -fx-background-radius: 20;
+}
+
+.progress-bar > .bar {
+    -fx-background-color: linear-gradient(to right, #7f5af0, #9d79ff);
+    -fx-background-insets: 0;
+    -fx-background-radius: 20;
+}
+
+
