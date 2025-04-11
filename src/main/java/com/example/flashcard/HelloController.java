@@ -1,9 +1,14 @@
 package com.example.flashcard;
 
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,6 +28,9 @@ public class HelloController implements Initializable {
     private Label welcomeText;
 
     @FXML
+    private Pane cardPane;
+
+    @FXML
     private ProgressBar barOfProgress;
 
     @FXML
@@ -31,11 +39,64 @@ public class HelloController implements Initializable {
     @FXML
     protected void onHelloButtonClick() {
         String text = welcomeText.getText();
-        if(text.equals(QuestionLoader.getQuestion(pos).getAnswer())) {
-            welcomeText.setText(QuestionLoader.getQuestion(pos).getQuestion());
+        Boolean isFliped = false;
+        long start_time = System.nanoTime();
+        if (text.equals(QuestionLoader.getQuestion(pos).getAnswer())) {
+
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.25), welcomeText);
+            fadeOut.setFromValue(1.0);
+            fadeOut.setToValue(0.0);
+
+            cardPane.setRotationAxis(Rotate.Y_AXIS);
+            RotateTransition flip = new RotateTransition(Duration.seconds(0.5), cardPane);
+            flip.setByAngle(180);
+            flip.setCycleCount(1);
+            flip.setAutoReverse(false);
+
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.25), welcomeText);
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
+
+            PauseTransition halfway = new PauseTransition(Duration.seconds(0.25));
+            halfway.setOnFinished(ev -> {
+                welcomeText.setText(QuestionLoader.getQuestion(pos).getQuestion());
+                fadeIn.play();
+            });
+
+            fadeOut.setOnFinished(e -> {
+                flip.play();
+                halfway.play();
+            });
+
+            fadeOut.play();
         }
         else{
-            welcomeText.setText(QuestionLoader.getQuestion(pos).getAnswer());
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.25), welcomeText);
+            fadeOut.setFromValue(1.0);
+            fadeOut.setToValue(0.0);
+
+            cardPane.setRotationAxis(Rotate.Y_AXIS);
+            RotateTransition flip = new RotateTransition(Duration.seconds(0.5), cardPane);
+            flip.setByAngle(180);
+            flip.setCycleCount(1);
+            flip.setAutoReverse(false);
+
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.25), welcomeText);
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
+
+            PauseTransition halfway = new PauseTransition(Duration.seconds(0.25));
+            halfway.setOnFinished(ev -> {
+                welcomeText.setText(QuestionLoader.getQuestion(pos).getAnswer());
+                fadeIn.play();
+            });
+
+            fadeOut.setOnFinished(e -> {
+                flip.play();
+                halfway.play();
+            });
+
+            fadeOut.play();
         }
         //welcomeText.setText(ans[pos]);
     }
@@ -44,8 +105,13 @@ public class HelloController implements Initializable {
         if(pos >= 1) {
             pos-=1;
             int c = pos+1;
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), welcomeText);
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
             welcomeText.setText(QuestionLoader.getQuestion(pos).getQuestion());
+            fadeIn.play();
             posText.setText("Nr. " + c);
+            animateProgressBar(barOfProgress, (double) pos /(N-1), Duration.millis(650));
             barOfProgress.setProgress((double) pos /(N-1));
         }
     }
@@ -55,8 +121,13 @@ public class HelloController implements Initializable {
         if(pos < N-1) {
             pos+=1;
             int c = pos+1;
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), welcomeText);
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
             welcomeText.setText(QuestionLoader.getQuestion(pos).getQuestion());
+            fadeIn.play();
             posText.setText("Nr. " + c);
+            animateProgressBar(barOfProgress, (double) pos /(N-1), Duration.millis(650));
             barOfProgress.setProgress((double) pos /(N-1));
         }
         else if(pos == N-1) {
@@ -74,6 +145,7 @@ public class HelloController implements Initializable {
         pos = 0;
         welcomeText.setText(QuestionLoader.getQuestion(pos).getQuestion());
         posText.setText("Nr. " + (pos+1));
+        animateProgressBar(barOfProgress, 0.0, Duration.millis(650));
         barOfProgress.setProgress(0.0);
         System.out.println("restart");
 
@@ -93,5 +165,26 @@ public class HelloController implements Initializable {
         posText.setText("Nr. " + c);
         welcomeText.setText(QuestionLoader.getQuestion(pos).getQuestion());
         barOfProgress.setProgress(0.0);
+    }
+    @FXML
+    private void flipCard() {
+        // Ustawienie osi obrotu – tylko raz, przy pierwszym kliknięciu
+        cardPane.setRotationAxis(Rotate.Y_AXIS);
+
+        RotateTransition flip = new RotateTransition(Duration.seconds(0.5), cardPane);
+        flip.setByAngle(180);
+        flip.setCycleCount(1);
+        flip.setAutoReverse(false);
+        flip.play();
+    }
+    public void animateProgressBar(ProgressBar progressBar, double targetProgress, Duration duration) {
+        double currentProgress = progressBar.getProgress();
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.ZERO, new KeyValue(progressBar.progressProperty(), currentProgress)),
+                new KeyFrame(duration, new KeyValue(progressBar.progressProperty(), targetProgress))
+        );
+
+        timeline.play();
     }
 }
