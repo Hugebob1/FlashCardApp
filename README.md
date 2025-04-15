@@ -8,14 +8,14 @@ Each flashcard set is currently read from a single file (`questions.txt`), and t
 
 ## Features
 
-Load flashcards from a text file (`questions.txt`)  
-Navigate through questions (`Previous` / `Next`)  
-Display answers on button click  
-Shows current question number  
-Neon-inspired UI with modern styling (JavaFX + CSS)
-Main menu with navigation between modes 
-Multiple flashcard sets (each file = one set)
-Set selector with file browsing
+- Load flashcards from a text file (`questions.txt`)
+- Navigate through questions (`Previous` / `Next`)
+- Display answers on button click
+- Shows current question number
+- Neon-inspired UI with modern styling (JavaFX + CSS)
+- Main menu with navigation between modes
+- Multiple flashcard sets (each file = one set)
+- Set selector with file browsing
 
 ---
 
