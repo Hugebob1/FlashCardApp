@@ -10,8 +10,9 @@ import java.util.List;
 public class QuestionLoader {
     private static List<Question> questions = new ArrayList<Question>();
     public static List<Question> loadQuestions() throws IOException {
-
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/questions.txt"))) {
+        String filename = FileNameXD.pickedset;
+        questions.clear();
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/"+filename + ".txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(":", 2); // tylko pierwsze wystąpienie ":"

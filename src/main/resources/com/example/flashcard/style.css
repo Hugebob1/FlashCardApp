@@ -93,4 +93,37 @@
     -fx-background-radius: 20;
 }
 
+/* Tło całego ListView */
+.list-view {
+    -fx-background-color: #0a0a0a;
+    -fx-control-inner-background: #0a0a0a;
+    -fx-background-insets: 0;
+    -fx-border-color: #7f00ff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 6px;
+    -fx-padding: 5px;
+    -fx-font-family: "Consolas", monospace;
+    -fx-font-size: 14px;
+    -fx-text-fill: #cba6ff;
+}
+
+/* Pojedyncza komórka w ListView */
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #cba6ff;
+    -fx-alignment: CENTER; /* <-- ŚRODKOWANIE tekstu */
+}
+
+/* Komórka po najechaniu */
+.list-cell:hover {
+    -fx-background-color: #3c1361;
+}
+
+/* Komórka zaznaczona */
+.list-cell:selected {
+    -fx-background-color: linear-gradient(to right, #7f00ff, #e100ff);
+    -fx-text-fill: white;
+}
+
+
 
