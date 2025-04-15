@@ -13,14 +13,14 @@ Navigate through questions (`Previous` / `Next`)
 Display answers on button click  
 Shows current question number  
 Neon-inspired UI with modern styling (JavaFX + CSS)
+Main menu with navigation between modes 
+Multiple flashcard sets (each file = one set)
+Set selector with file browsing
 
 ---
 
-## Planned Features
-
-- [ ] **Main menu** with navigation between modes  
-- [ ] **Multiple flashcard sets** (each file = one set)  
-- [ ] **Set selector** with file browsing  
+## Planned Feature
+  
 - [ ] **Add new sets** from within the app  
 - [ ] **Basic statistics** (how many correct/incorrect)  
 - [ ] Optional: dark/light theme toggle  
