@@ -124,6 +124,26 @@
     -fx-background-color: linear-gradient(to right, #7f00ff, #e100ff);
     -fx-text-fill: white;
 }
+.text-area, .text-field {
+    -fx-background-color: #121212;
+    -fx-text-fill: #c084fc;
+    -fx-border-color: #a855f7;
+    -fx-border-width: 1px;
+    -fx-font-family: "Consolas", monospace;
+    -fx-font-size: 14px;
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+    -fx-padding: 0.333em; /* domyślny padding */
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-pref-height: inherit;
+    -fx-pref-width: inherit;
+}
+.text-area:focused, .text-field:focused {
+    -fx-border-color: #e879f9;
+    -fx-effect: dropshadow(gaussian, #e879f9, 10, 0.3, 0, 0);
+}
+
 
 
 

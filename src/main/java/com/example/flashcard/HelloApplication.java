@@ -9,25 +9,16 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
 
-    public static Stage primaryStage;
-    static FXMLLoader fxmlLoader1 = new FXMLLoader(HelloApplication.class.getResource("mainmenu.fxml"));
-    public static Scene MainMenu;
-
-    static {
-        try {
-            MainMenu = new Scene(fxmlLoader1.load());
-            MainMenu.getStylesheets().add(HelloApplication.class.getResource("/com/example/flashcard/style.css").toExternalForm());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     @Override
     public void start(Stage stage) throws IOException {
-        primaryStage = stage;
-        primaryStage.setTitle("ForMyBambik");
-        primaryStage.setScene(MainMenu);
-        primaryStage.show();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mainmenu.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(getClass().getResource("/com/example/flashcard/style.css").toExternalForm());
+        stage.setScene(scene);
+        stage.sizeToScene();
+        stage.setTitle("Siemano");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public static void main(String[] args) {

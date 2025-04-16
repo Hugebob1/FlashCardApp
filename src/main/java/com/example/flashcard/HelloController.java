@@ -195,7 +195,11 @@ public class HelloController implements Initializable {
     }
     @FXML
     public void switchscene(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("mainmenu.fxml"));
+        Scene scene = new Scene(loader.load());
+        scene.getStylesheets().add(getClass().getResource("/com/example/flashcard/style.css").toExternalForm());
+
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(HelloApplication.MainMenu);
+        stage.setScene(scene);
     }
 }

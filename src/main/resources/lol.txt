@@ -1,0 +1,10 @@
+Co mierzy prędkościomierz:Aktualną prędkość pojazdu
+Do czego służy sprzęgło:Rozłącza silnik od skrzyni biegów podczas zmiany przełożeń
+Jakie światła należy włączyć podczas jazdy w dzień:Światła do jazdy dziennej lub mijania
+Gdzie znajduje się korek wlewu oleju silnikowego:Na górze silnika, pod maską
+Czym różni się napęd na cztery koła od napędu na jedną oś:Przekazuje moc na wszystkie cztery koła zamiast dwóch
+Do czego służy hamulec ręczny:Unieruchamia pojazd podczas postoju
+Czym jest spalanie:Zużycie paliwa przez silnik na 100 km
+Co to jest moment obrotowy:Siła powodująca obrót wału silnika
+Czym są poduszki powietrzne:Elementy bezpieczeństwa chroniące kierowcę i pasażerów podczas kolizji
+Jakie dokumenty musi mieć przy sobie kierowca:Prawo jazdy, dowód rejestracyjny, potwierdzenie ubezpieczenia OC

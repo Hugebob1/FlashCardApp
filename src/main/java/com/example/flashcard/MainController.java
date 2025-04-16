@@ -48,4 +48,13 @@ public class MainController implements Initializable {
             System.out.println("Nie wybrano żadnego pliku.");
         }
     }
+
+    @FXML
+    private void handleAddClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("addset.fxml"));
+        Scene scene = new Scene(loader.load());
+        scene.getStylesheets().add(getClass().getResource("/com/example/flashcard/style.css").toExternalForm());
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+    }
 }

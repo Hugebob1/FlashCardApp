@@ -19,8 +19,14 @@
          </children>
       </Pane>
       <Button layoutX="63.0" layoutY="207.0" mnemonicParsing="false" onAction="#handlePlayClick" prefHeight="25.0" prefWidth="101.0" text="Play" />
-      <Button layoutX="63.0" layoutY="282.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Add set" />
-      <ListView fx:id="listView" layoutX="300.0" layoutY="207.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button layoutX="63.0" layoutY="356.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Refactor" />
+      <Button layoutX="63.0" layoutY="263.0" mnemonicParsing="false" onAction="#handleAddClick" prefHeight="25.0" prefWidth="101.0" text="Add set" />
+      <ListView fx:id="listView" layoutX="300.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="63.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Refactor" />
+      <Button layoutX="63.0" layoutY="374.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Delete" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="350.0" layoutY="175.0" prefHeight="32.0" prefWidth="101.0" text="Your sets" textFill="#cd00c9">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
