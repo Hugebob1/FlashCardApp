@@ -57,4 +57,30 @@ public class MainController implements Initializable {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
     }
+
+    @FXML
+    private void handleDeleteClick(ActionEvent event) throws IOException {
+        String wybranyPlik = (String) listView.getSelectionModel().getSelectedItem();
+        if (wybranyPlik != null) {
+            Filelister.removeFile("src/main/resources", wybranyPlik);
+            List<String> sets = Filelister.getFileNames("src/main/resources");
+
+            ObservableList<String> temp = FXCollections.observableArrayList(sets);
+
+            listView.setItems(temp);
+        }
+    }
+    @FXML
+    private void handleRefactorClick(ActionEvent event) throws IOException {
+        String wybranyPlik = (String) listView.getSelectionModel().getSelectedItem();
+        if (wybranyPlik != null) {
+            FileNameXD.pickedset = wybranyPlik;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("refactorset.fxml"));
+            Scene scene = new Scene(loader.load());
+            scene.getStylesheets().add(getClass().getResource("/com/example/flashcard/style.css").toExternalForm());
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+        }
+
+    }
 }

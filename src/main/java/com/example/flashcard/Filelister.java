@@ -1,8 +1,6 @@
 package com.example.flashcard;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,4 +34,32 @@ public class Filelister {
             System.out.println("Failed to save file: " + e.getMessage());
         }
     }
+    public static void removeFile(String folderPath, String fileName) {
+        try {
+            File file = new File(folderPath+"/"+fileName+".txt");
+            if(file.delete()){
+                System.out.println("File deleted successfully");
+            }
+        }catch (Exception e) {
+            System.out.println("Failed to delete file: " + e.getMessage());
+        }
+    }
+    public static String readFromFileToString(String folderPath, String fileName) throws IOException {
+        File file = new File(folderPath + File.separator + fileName + ".txt");
+        StringBuilder all = new StringBuilder();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                all.append(line).append("\n");
+            }
+        }
+        return all.toString();
+    }
+    public static void writeToFile(String folderPath, String fileName, String all) throws IOException {
+        File file = new File(folderPath+"/"+fileName+".txt");
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+        bufferedWriter.write(all);
+        bufferedWriter.close();
+    }
+
 }

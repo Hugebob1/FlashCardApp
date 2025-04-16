@@ -18,3 +18,4 @@ Który nerw czaszkowy odpowiada za słuch i równowagę:Nerw przedsionkowo-ślim
 Gdzie znajduje się grasica:W śródpiersiu, nad sercem
 Która kość tworzy podstawę nosa:Kość nosowa
 Jak nazywa się błona wyściełająca wnętrze jamy brzusznej:Otrzewna
+Test:test
