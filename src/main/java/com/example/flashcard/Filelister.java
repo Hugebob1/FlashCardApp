@@ -23,17 +23,27 @@ public class Filelister {
         return fileNames;
     }
     public static void addFile(String folderPath, String fileName, String fileContent) {
-        try{
-            File file = new File(folderPath+"/"+fileName+".txt");
+        try {
+            File file = new File(folderPath + "/" + fileName + ".txt");
+
+            // Upewniamy się, że folder istnieje
+            File parentDir = file.getParentFile();
+            if (parentDir != null && !parentDir.exists()) {
+                parentDir.mkdirs();
+            }
+
+            // Tworzymy plik
             file.createNewFile();
+
+            // Zapisujemy treść
             FileWriter fileWriter = new FileWriter(file);
             fileWriter.write(fileContent);
             fileWriter.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("Failed to save file: " + e.getMessage());
         }
     }
+
     public static void removeFile(String folderPath, String fileName) {
         try {
             File file = new File(folderPath+"/"+fileName+".txt");
